@@ -12,11 +12,17 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="mx-auto mt-96 flex flex-col space-y-3 items-center">
-      <button onClick={showNotification}>
+    <div className="mx-auto mt-64 flex flex-col space-y-10 items-center py-7 border border-gray-500">
+      <button
+        className="bg-amber-400 rounded-2xl px-3 py-1"
+        onClick={showNotification}
+      >
         Show Notification
       </button>
-      <button onClick={showDailyNotification}>
+      <button
+        className="bg-amber-400  rounded-2xl px-3 py-1"
+        onClick={showDailyNotification}
+      >
         Daily At Time Notification
       </button>
     </div>
