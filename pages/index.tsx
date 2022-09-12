@@ -8,7 +8,11 @@ const Home: NextPage = () => {
 
   function showDailyNotification() {
     // @ts-ignore
-    ShowDailyNotification.postMessage('매일 같은 시간 보이는 알림입니다.')
+    ShowDailyNotification.postMessage(JSON.stringify({
+      message: '매일 같은 시간 보이는 알림입니다.',
+      hour: 3,
+      minute: 10
+    }))
   }
 
   return (
