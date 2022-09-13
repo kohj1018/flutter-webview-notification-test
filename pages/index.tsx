@@ -58,7 +58,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="h-[90vh] flex items-center justify-center">
-      <main className="mx-auto mt-64 flex flex-col space-y-10 items-center py-7 border border-gray-500">
+      <main className="w-full flex flex-col space-y-10 items-center py-7 border border-gray-500">
         <button
           className="bg-amber-400 rounded-2xl px-3 py-1"
           onClick={showNotification}
