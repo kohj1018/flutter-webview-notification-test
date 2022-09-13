@@ -1,6 +1,40 @@
 import type { NextPage } from 'next'
+import {useEffect, useState} from "react";
 
 const Home: NextPage = () => {
+  const [browserName, setBrowserName] = useState<string>('')
+
+  useEffect(() => {
+    const agent = window.navigator.userAgent.toLowerCase()
+    switch (true) {
+      case agent.indexOf("edge") > -1:
+        setBrowserName("MS Edge"); // MS 엣지
+        break;
+      case agent.indexOf("edg/") > -1:
+        setBrowserName("Edge (chromium based)"); // 크롬 기반 엣지
+        break;
+      // @ts-ignore
+      case agent.indexOf("opr") > -1 && !!window.opr:
+        setBrowserName("Opera"); // 오페라
+        break;
+      // @ts-ignore
+      case agent.indexOf("chrome") > -1 && !!window.chrome:
+        setBrowserName("Chrome"); // 크롬
+        break;
+      case agent.indexOf("trident") > -1:
+        setBrowserName("MS IE"); // 익스플로러
+        break;
+      case agent.indexOf("firefox") > -1:
+        setBrowserName("Mozilla Firefox"); // 파이어 폭스
+        break;
+      case agent.indexOf("safari") > -1:
+        setBrowserName("Safari"); // 사파리
+        break;
+      default:
+        setBrowserName("other"); // 기타
+    }
+  }, [])
+
   function showNotification() {
     // @ts-ignore
     ShowNotification.postMessage('한번 보이는 알림입니다.')
@@ -29,6 +63,7 @@ const Home: NextPage = () => {
       >
         Daily At Time Notification
       </button>
+      <h1 className="text-2xl font-bold">Your Browser Type : {browserName}</h1>
     </div>
   )
 }
