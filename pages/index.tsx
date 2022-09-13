@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 
 const Home: NextPage = () => {
   const [browserName, setBrowserName] = useState<string>('')
+  const [isMobile, setIsMobile] = useState<boolean>(false)
 
   useEffect(() => {
     const agent = window.navigator.userAgent.toLowerCase()
@@ -33,6 +34,7 @@ const Home: NextPage = () => {
       default:
         setBrowserName("other"); // 기타
     }
+    setIsMobile(checkMobile)
   }, [])
 
   function showNotification() {
@@ -49,6 +51,11 @@ const Home: NextPage = () => {
     }))
   }
 
+  function checkMobile() {
+    console.log("userAgent : ", navigator.userAgent)
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
   return (
     <div className="mx-auto mt-64 flex flex-col space-y-10 items-center py-7 border border-gray-500">
       <button
@@ -58,12 +65,15 @@ const Home: NextPage = () => {
         Show Notification
       </button>
       <button
-        className="bg-amber-400  rounded-2xl px-3 py-1"
+        className="bg-amber-400 rounded-2xl px-3 py-1"
         onClick={showDailyNotification}
       >
         Daily At Time Notification
       </button>
       <h1 className="text-2xl font-bold">Your Browser Type : {browserName}</h1>
+      <button className={"bg-blue-500 text-white rounded-2xl px-3 py-1" + (isMobile ? ' visible' : ' hidden')}>
+        This button is mobile only
+      </button>
     </div>
   )
 }
