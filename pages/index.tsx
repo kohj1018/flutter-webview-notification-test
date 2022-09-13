@@ -57,23 +57,25 @@ const Home: NextPage = () => {
   }
 
   return (
-    <div className="mx-auto mt-64 flex flex-col space-y-10 items-center py-7 border border-gray-500">
-      <button
-        className="bg-amber-400 rounded-2xl px-3 py-1"
-        onClick={showNotification}
-      >
-        Show Notification
-      </button>
-      <button
-        className="bg-amber-400 rounded-2xl px-3 py-1"
-        onClick={showDailyNotification}
-      >
-        Daily At Time Notification
-      </button>
-      <h1 className="text-2xl font-bold">Your Browser Type : {browserName}</h1>
-      <button className={"bg-blue-500 text-white rounded-2xl px-3 py-1" + (isMobile ? ' visible' : ' hidden')}>
-        This button is mobile only
-      </button>
+    <div className="h-[90vh] flex items-center justify-center">
+      <main className="mx-auto mt-64 flex flex-col space-y-10 items-center py-7 border border-gray-500">
+        <button
+          className="bg-amber-400 rounded-2xl px-3 py-1"
+          onClick={showNotification}
+        >
+          Show Notification
+        </button>
+        <button
+          className="bg-amber-400 rounded-2xl px-3 py-1"
+          onClick={showDailyNotification}
+        >
+          Daily At Time Notification
+        </button>
+        <h1 className="text-2xl font-bold">Your Browser Type : {browserName}</h1>
+        <button className={"bg-blue-500 text-white rounded-2xl px-3 py-1" + (isMobile ? ' visible' : ' hidden')}>
+          This button is mobile only
+        </button>
+      </main>
     </div>
   )
 }
