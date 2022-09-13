@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import {useEffect, useState} from "react";
+import Link from "next/link";
 
 const Home: NextPage = () => {
   const [browserName, setBrowserName] = useState<string>('')
@@ -42,15 +43,6 @@ const Home: NextPage = () => {
     ShowNotification.postMessage('한번 보이는 알림입니다.')
   }
 
-  function showDailyNotification() {
-    // @ts-ignore
-    ShowDailyNotification.postMessage(JSON.stringify({
-      message: '매일 같은 시간 보이는 알림입니다.',
-      hour: 3,
-      minute: 10
-    }))
-  }
-
   function checkMobile() {
     console.log("userAgent : ", navigator.userAgent)
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -65,12 +57,13 @@ const Home: NextPage = () => {
         >
           Show Notification
         </button>
-        <button
-          className="bg-amber-400 rounded-2xl px-3 py-1"
-          onClick={showDailyNotification}
+        <Link
+          href="dailyNotification"
         >
-          Daily At Time Notification
-        </button>
+          <a className="bg-amber-400 rounded-2xl px-3 py-1">
+            Daily At Time Notification
+          </a>
+        </Link>
         <h1 className="text-2xl font-bold">Your Browser Type : {browserName}</h1>
         <button className={"bg-blue-500 text-white rounded-2xl px-3 py-1" + (isMobile ? ' visible' : ' hidden')}>
           This button is mobile only
