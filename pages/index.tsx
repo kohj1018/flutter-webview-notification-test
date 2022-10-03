@@ -50,7 +50,7 @@ const Home: NextPage = () => {
 
   const getPermission = () => {
     // @ts-ignore
-    GetPermission.postMessage()
+    GetPermission.postMessage('권한 얻기')
   }
 
   function fromFlutter(responseText: string) {
