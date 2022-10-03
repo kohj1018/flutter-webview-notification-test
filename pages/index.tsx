@@ -55,6 +55,8 @@ const Home: NextPage = () => {
 
   function fromFlutter(responseText: string) {
     console.log(responseText)
+    // @ts-ignore
+    document.getElementById('permissionState').innerHTML = responseText
   }
 
   return (
@@ -83,6 +85,7 @@ const Home: NextPage = () => {
         >
           카메라 권한 얻기
         </button>
+        <p id="permissionState">권한X</p>
       </main>
     </div>
   )
