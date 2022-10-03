@@ -48,6 +48,15 @@ const Home: NextPage = () => {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   }
 
+  const getPermission = () => {
+    // @ts-ignore
+    GetPermission.postMessage()
+  }
+
+  function fromFlutter(responseText: string) {
+    console.log(responseText)
+  }
+
   return (
     <div className="h-[90vh] flex items-center justify-center">
       <main className="w-full flex flex-col space-y-10 items-center py-7 border border-gray-500">
@@ -67,6 +76,12 @@ const Home: NextPage = () => {
         <h1 className="text-2xl font-bold">Your Browser Type : {browserName}</h1>
         <button className={"bg-blue-500 text-white rounded-2xl px-3 py-1" + (isMobile ? ' visible' : ' hidden')}>
           This button is mobile only
+        </button>
+        <button
+          className="bg-purple-500 text-white rounded-2xl px-3 py-1"
+          onClick={getPermission}
+        >
+          카메라 권한 얻기
         </button>
       </main>
     </div>
