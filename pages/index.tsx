@@ -60,10 +60,10 @@ const Home = () => {
     GetPermission.postMessage('권한 얻기')
   }
 
-  // @ts-ignore
-  window.allowCamera = function () {
-    setIsPermission(true)
-  }
+  // // @ts-ignore
+  // window.allowCamera = function () {
+  //   setIsPermission(true)
+  // }
 
   return (
     <div className="h-[90vh] flex items-center justify-center">
