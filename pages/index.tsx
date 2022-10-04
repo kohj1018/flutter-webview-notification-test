@@ -1,10 +1,17 @@
-import type { NextPage } from 'next'
 import {useEffect, useState} from "react";
 import Link from "next/link";
 
-const Home: NextPage = () => {
+const Home = () => {
   const [browserName, setBrowserName] = useState<string>('')
   const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isPermission, setIsPermission] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (isPermission) {
+      // @ts-ignore
+      document.getElementById("permissionState").innerHTML = "카메라 권한 설정이 완료되었습니다!"
+    }
+  }, [isPermission])
 
   useEffect(() => {
     const agent = window.navigator.userAgent.toLowerCase()
@@ -53,10 +60,12 @@ const Home: NextPage = () => {
     GetPermission.postMessage('권한 얻기')
   }
 
-  function fromFlutter(responseText: string) {
-    console.log(responseText)
+  // @ts-ignore
+  if (!window.allowCamera) {
     // @ts-ignore
-    document.getElementById('permissionState').innerHTML = responseText
+    window.allowCamera = function () {
+      setIsPermission(true)
+    }
   }
 
   return (
