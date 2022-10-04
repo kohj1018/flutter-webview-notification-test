@@ -61,11 +61,8 @@ const Home = () => {
   }
 
   // @ts-ignore
-  if (!window.allowCamera) {
-    // @ts-ignore
-    window.allowCamera = function () {
-      setIsPermission(true)
-    }
+  window.allowCamera = function () {
+    setIsPermission(true)
   }
 
   return (
